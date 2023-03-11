@@ -239,11 +239,59 @@ console.log("Vegetarian Foods: ", vegetarianDishNames)
 // <<<<<<<<<<<<<<<<< BONUS <<<<<<<<<<<<<<<<<
 //9. Create a function that will return dishes whose ingredients array INCLUDES "chickpea".
 //Hint: You do not need to check the array's indexes to find out what the array INCLUDES.
+const searchDishesWithChickpea = () => {
+  let results = dishes.filter((el) => {
+    if (el.ingredients.includes("chickpea")) {
+      return true
+    } else {
+      return false
+    }
+  })
+  return results
+}
+
+let dishesWithChickpea = searchDishesWithChickpea()
+console.log("Dishes with Chickpea's: ", dishesWithChickpea)
 //Filter
 
 //10. Create a function that will return the total serving count of all dishes.
+const getTotalServings = (dishes) => {
+  return dishes.reduce((total, dish) => total + dish.servings, 0)
+}
+
+console.log(getTotalServings(dishes))
 //Must use Reduce, not a loop.
 
 //11. Create a function that will return an array of any objects that do not share a cuisine type with any other objects.
+const getUniqueCuisineTypes = (dishes) => {
+  const uniqueDishes = [];
+  for (let i = 0; i < dishes.length; i++) {
+    let isUnique = true;
+    for (let j = 0; j < dishes.length; j++) {
+      if (i !== j && dishes[i].cuisine === dishes[j].cuisine) {
+        isUnique = false;
+        break;
+      }
+    }
+    if (isUnique) {
+      uniqueDishes.push(dishes[i]);
+    }
+  }
+  return uniqueDishes;
+}
+
+console.log(getUniqueCuisineTypes(dishes))
 
 //12. Revisit your solution for Problem 6.  Use the filter method to eliminate duplicate cuisine types, leaving only distinct values in the array.
+const cuisineTypesRevised = () => {
+  let results = dishes.map((el) => {
+    return el.cuisine
+  })
+  results = results.filter((el, index) => {
+    return results.indexOf(el) === index
+  })
+  return results
+}
+
+let cuisineTypeRevisedResults = cuisineTypesRevised()
+console.log("Cuisine Types: ", cuisineTypeRevisedResults)
