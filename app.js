@@ -122,28 +122,118 @@ console.log("Mexican Foods: ", mexicanFood);
 // <<<<<<<<<<<<<<<<< PROBLEMS <<<<<<<<<<<<<<<<<
 
 //1. Create a function that will return all dishes with the cuisine type of "Vegetarian"
+const findVegetarianFood = () => {
+  let results = dishes.filter((el) => {
+    if (el.cuisine === "Vegetarian") {
+      return true
+    } else {
+      return false
+    }
+  })
+  return results
+}
+
+let vegetarianFoods = findVegetarianFood()
+console.log("Vegetarian Foods: ", vegetarianFoods)
 //Filter
 
 //2. Create a function that will return all dishes with the cuisine type of "Italian" and a serving size greater than 5.
+const findItalianFoodWithGreaterThanFiveServings = () => {
+  let results = dishes.filter((el) => {
+    if (el.cuisine === "Italian" && el.servings > 5) {
+      return true
+    } else {
+      return false
+    }
+  })
+  return results
+}
+
+let italianFoods = findItalianFoodWithGreaterThanFiveServings()
+console.log("Italian Foods: ", italianFoods)
 //Filter
 
 //3. Create a function that will return only dishes whose id number matches their serving count.
+const findIdNumberMatchingServingCount = () => {
+  let results = dishes.filter((el) => {
+    if (el.id === el.servings) {
+      return true
+    } else {
+      return false
+    }
+  })
+  return results
+}
+
+let matchingIdsAndServings = findIdNumberMatchingServingCount()
+console.log("Matching Id's and Servings: ", matchingIdsAndServings)
 //Filter
 
 //4. Create a function that will return only dishes whose serving count is even.
+const findDishesWithEvenServingCount = () => {
+  let results = dishes.filter((el) => {
+    if ((el.servings % 2) === 0) {
+      return true
+    } else {
+      return false
+    }
+  })
+  return results
+}
+
+let evenServingCountDishes = findDishesWithEvenServingCount()
+console.log("Dishes with even serving counts: ", evenServingCountDishes)
 //Filter
 
 //5. Create a function that will return dishes whose ingredients array is "tomato" and "cheese".
+const findDishesWithTomatoAndCheeseIngredients = () => {
+  let results = dishes.filter((el) => {
+    if (el.ingredients.includes("tomato") && el.ingredients.includes("cheese")) {
+      return true
+    } else {
+      return false
+    }
+  })
+  return results
+}
+
+let dishesWithTomatoAndCheese = findDishesWithTomatoAndCheeseIngredients()
+console.log("Dishes with tomatos and cheese: ", dishesWithTomatoAndCheese)
 //Filter
 
 //6. Create a function that will return an array of only the names of the cuisine types. Ie ['Italian', 'Mexican', ...]
+const cuisineTypes = () => {
+  let results = dishes.map((el) => {
+    return el.cuisine
+  })
+  return results
+}
+let cuisineTypeResults = cuisineTypes()
+console.log("Cuisine Types: ", cuisineTypeResults)
 //Map
 
 //7. Create a function that will append the cuisine type to the start of the dish's name. Ie, "Italian Pizza"
+const cuisineTypeWithDish = () => {
+  let results = dishes.map((el) => {
+    return `${el.cuisine} ${el.name}`
+  })
+  return results
+}
+let cuisineTypeWithDishResults = cuisineTypeWithDish()
+console.log("Cuisine Types: ", cuisineTypeWithDishResults)
 //Map
 
 //8. Create a function that will append the cuisine type to the start of the dish's name. Then, return only the Vegetarian dish objects. 
 //This function should return objects 11-13 with their names changed to "Vegetarian Lasagna", "Vegetarian Falafel", "Vegetarian Chili"
+const appendCuisineType = (filterFunction) => {
+  const theCuisines = filterFunction()
+  let results = theCuisines.map((el) => {
+    return `${el.cuisine} ${el.name}`
+  })
+  return results
+}
+let vegetarianDishNames = appendCuisineType(findVegetarianFood)
+console.log("Vegetarian Foods: ", vegetarianDishNames)
 //Map, Filter
 
 // <<<<<<<<<<<<<<<<< BONUS <<<<<<<<<<<<<<<<<
